@@ -1,0 +1,25 @@
+# Project Euler problem 10: Summation of primes
+
+from NumberTests import isEven 
+from NumberTests import isPrime 
+
+def sumPrime(limit):
+  """Find the sum of all the primes below the given limit."""
+  sum_of_primes = 2 
+
+  for num in range(3, limit, 2):
+    if isPrime(num):
+      sum_of_primes += num
+      
+  return sum_of_primes
+
+def main():
+    LIMIT = 2000000 
+    
+    result = sumPrime(LIMIT)
+
+    print(f"The sum of all primes below {LIMIT:,} is: {result:,}")
+
+if __name__ == '__main__':
+  
+    main()

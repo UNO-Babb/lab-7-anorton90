@@ -1,0 +1,46 @@
+# Project Euler Problem 7: 10001st prime
+
+from NumberTests import isEven 
+from NumberTests import isPrime 
+
+def isEven(n):
+  return n % 2 == 0
+
+def isPrime(p):
+  if p <= 1:
+    return False
+  if p == 2:
+    return True
+  if isEven(p):
+      return False
+  
+  limit = int(p ** 0.5) 
+  
+  for div in range(3, limit + 1, 2):
+    if p % div == 0:
+        return False
+     
+  return True
+
+def find_nth_prime(n):
+    """Finds the nth prime number."""
+    if n == 1:
+        return 2  
+
+    prime_count = 1  
+    candidate = 3    
+    
+    while prime_count < n:
+        if isPrime(candidate):
+            prime_count += 1
+            if prime_count == n:
+                return candidate
+        candidate += 2
+
+def main():
+    count = 10001
+    result = find_nth_prime(count)
+    print(f"The {count:,}st prime number is: {result:,}")
+
+if __name__ == '__main__':
+    main()
